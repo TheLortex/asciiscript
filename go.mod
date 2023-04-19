@@ -1,1 +1,1 @@
-module github.com/christopher-dG/asciiscript
+module github.com/TheLortex/asciiscript

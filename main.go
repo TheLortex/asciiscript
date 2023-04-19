@@ -76,6 +76,12 @@ func (s Shell) Run(sc *Script) {
 	}
 }
 
+//
+func NewRaw(opts []string) (Shell, error) {
+	cmd := strings.Join(opts, " ")
+	return Shell{Cmd: cmd}, nil
+}
+
 // Wait is a command to change the interval between commands.
 type Wait struct {
 	Duration time.Duration
@@ -132,6 +138,8 @@ func NewCtrl(cmd string) (Command, error) {
 		return NewDelay(tokens[1:])
 	case "wait":
 		return NewWait(tokens[1:])
+	case "raw":
+		return NewRaw(tokens[1:])
 	default:
 		return nil, ErrUnknownCtrl
 	}
